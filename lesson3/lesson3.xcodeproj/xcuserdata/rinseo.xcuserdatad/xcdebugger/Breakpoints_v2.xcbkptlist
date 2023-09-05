@@ -3,4 +3,54 @@
    uuid = "219A8096-D3E7-46E4-AA57-3B175F323688"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8636799-E514-4707-A24F-42669B6493E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lesson3/ProductListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C8636799-E514-4707-A24F-42669B6493E8 - ebe80dea8271237b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;lesson3.Product&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;lesson3.ListItemView, lesson3.ProductDTView&gt;&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;lesson3.Product&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;lesson3.ListItemView, lesson3.ProductDTView&gt;&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt;&gt; in lesson3.ProductListView.body.getter : some"
+                  moduleName = "lesson3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rinseo/Desktop/PG5602-iOS/lesson3/lesson3/ProductListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "C8636799-E514-4707-A24F-42669B6493E8 - 5ad78793586fa2b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;lesson3.Product&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;lesson3.ListItemView, lesson3.ProductDTView&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;lesson3.Product&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;lesson3.ListItemView, lesson3.ProductDTView&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Text&gt;)&gt;&gt; in lesson3.ProductListView.body.getter : some"
+                  moduleName = "lesson3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rinseo/Desktop/PG5602-iOS/lesson3/lesson3/ProductListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

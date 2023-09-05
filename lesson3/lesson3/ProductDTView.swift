@@ -11,6 +11,10 @@ struct ProductDTView: View {
     
     let product: Product
     
+    init(product: Product) {
+        self.product = product
+    }
+    
     var body: some View {
         VStack {
             Text(product.name)

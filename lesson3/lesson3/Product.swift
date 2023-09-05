@@ -16,8 +16,34 @@ struct Product: Identifiable {
     let name: String
     let description: String
     let price: Int
+    
+    
+    
 }
 
-func testProd() {
-    let prod1 = Product(name: "test", description: "test", price: 0)
+
+// This is globally available
+// namespace this
+extension Product {
+    static let demoProducts = [
+        Product.init(name: "Bukse", description: "Grå", price: 500),
+        Product.init(name: "T-skjorte", description: "Blå", price: 400),
+        Product.init(name: "Sko", description: "Hvit", price: 1090)
+    ]
+    
+    
+    static func testReturnProducts() -> [Product] {
+        return [
+            Product.init(name: "genser 1", description: "grønn med mønster", price: 890),
+            Product.init(name: "genser 2", description: "rød med mønster", price: 890),
+            Product.init(name: "genser 3", description: "blå med mønster", price: 890)
+        ]
+    }
+}
+
+
+// testReturnProduct() is static available
+func aMethod() {
+    let product1 = Product.demoProducts[0]
+    //Product.testReturnProducts()
 }
