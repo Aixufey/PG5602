@@ -20,20 +20,22 @@ struct ContentView: View {
         NavigationStack {
             
             // Refactored this List into a separated file.
-            // ContactVerticalListView(contacts: contacts)
+             ContactVerticalListView(contacts: contacts)
             
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    
-                    HStack {
-                        ForEach(contacts) { ele in
-                            CardView(tag: "⚠️",img: ele.img ?? "coder", fName: ele.firstName, lName: ele.lastName, desc: ele.description ?? "").padding(50)
-                            
-                        }
-                    }
-                    .padding(25)
-                }
-            }
+            
+            // TODO: Need to refactor this into a horizontal View
+//            VStack {
+//                ScrollView(.horizontal, showsIndicators: false) {
+//
+//                    HStack {
+//                        ForEach(contacts) { ele in
+//                            CardView(tag: "⚠️",img: ele.img ?? "coder", fName: ele.firstName, lName: ele.lastName, desc: ele.description ?? "").padding(50)
+//
+//                        }
+//                    }
+//                    .padding(25)
+//                }
+//            }
             
             
         } // nav stack

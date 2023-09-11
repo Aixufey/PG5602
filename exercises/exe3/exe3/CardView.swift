@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct CardView: View {
-    var tag = ""
-    var img = ""
-    var fName = ""
-    var lName = ""
-    var desc = ""
+    var tag: String?
+    var img: String?
+    var fName: String
+    var lName: String
+    var desc: String?
+    
+    init(tag: String? = nil, img: String? = nil, fName: String, lName: String, desc: String? = nil) {
+        self.tag = tag
+        self.img = img
+        self.fName = fName
+        self.lName = lName
+        self.desc = desc
+    }
     
     
     
@@ -22,13 +30,13 @@ struct CardView: View {
             Spacer()
             VStack {
                 ZStack {
-                    Image(img)
+                    Image(img ?? "coder")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .overlay(Circle()
                             .stroke(Color.gray, lineWidth: 2))
-                    Text(tag)
+                    Text(tag ?? "🫥")
                         .font(.system(size: 85))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -40,7 +48,7 @@ struct CardView: View {
                     Text(String(fName).capitalized)
                     Text(String(lName).capitalized)
                 }.font(.system(size: 28))
-                Text(desc).italic()
+                Text(desc ?? "").italic()
             }
             
             Spacer()

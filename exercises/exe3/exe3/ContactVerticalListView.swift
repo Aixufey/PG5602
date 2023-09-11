@@ -19,8 +19,8 @@ struct ContactVerticalListView: View {
                 // Route to a new "view"
                 NavigationLink {
                     VStack {
-                        Text(ele.firstName)
-                        Text(ele.lastName)
+                        
+                        CardView(tag: "👾", img: ele.img, fName: ele.firstName, lName: ele.lastName)
                     }
                     // label = placeholder for each rows in the list
                 } label: {
