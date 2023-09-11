@@ -70,7 +70,7 @@ struct ProductListView: View {
                 // ForEach(products, id:  \.self){product in
                 ForEach(products) { product in
                     
-                    // Navigate to items
+                    // Navigate to item
                     NavigationLink {
                         ProductDTView(product: product)
                         
@@ -102,8 +102,14 @@ struct ProductListView: View {
             .sheet(isPresented: $isPresentingAddProductView) {
                 // Swift dislike adding mutiple sheets stacked together so we refactored
                 // the Add product into a new View....
+                // Initializing the view with a Struct signature that is a function INIT
                 AddProductView() { product in
                     print(product)
+                    
+                    // Appending to Array
+                    products.append(product)
+                    // Closing the Sheet after append
+                    isPresentingAddProductView = false
                 }
                 
                 //                Refactored into a new View as AddProductView()

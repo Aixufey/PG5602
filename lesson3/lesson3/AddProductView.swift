@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct AddProductView: View {
+    var didAddProduct: ((Product) -> ())
     
+    // Struct signature that is a function
+    init(didAddProduct: @escaping (Product) -> Void) {
+        self.didAddProduct = didAddProduct
+    }
     
     
     // STATES: Textfield attributes
@@ -16,10 +21,18 @@ struct AddProductView: View {
     @State var newProductDescription: String = ""
     @State var newProductPrice: String = ""
     
-    var didAddProduct: ((Product) -> ())
+    @State var isShowingErrorAlert = false
     
     func addProduct() {
-        
+        // if with bool check oneliner
+        if let productPrice = Int(newProductPrice) {
+            let product = Product(name: newProductName, description: newProductDescription, price: productPrice)
+            didAddProduct(product)
+            
+        } else {
+            isShowingErrorAlert = true
+        }
+        return ()
     }
     
     
@@ -45,12 +58,15 @@ struct AddProductView: View {
             
             
             // Saving the state from userinput
-            Button {
+            // This Button struct takes two function closure, an event and returning a View
+            Button() {
+                // Closure 1 - some type of event
                 // 1 user tapped button
                 print("user tapped button")
                 addProduct()
-            } label: {
-                // This Button returns a View
+                return () // same as Void
+            } label: { // label is the second half of the func that returns a custom View
+                // Closure 2 - returning a View
                 VStack {
                     Text("Lagre")
                     Text("Produkt")
@@ -59,6 +75,10 @@ struct AddProductView: View {
             
             
             Spacer()
+        }.alert("Det skjedde noe feil", isPresented: $isShowingErrorAlert) {
+            Text("Dette var action closure")
+        } message: {
+            Text("Dette var message closure")
         }
     }
 }
