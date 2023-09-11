@@ -14,7 +14,7 @@ struct lesson3App: App {
             
             // Usually API response will be sent into this view
             // TODO: Privileges should be a login to give access
-            ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin)
+            ProductListView(products: Product.demoProducts, isAdmin: true, userlvl: UserLevel.admin)
         }
     }
 }

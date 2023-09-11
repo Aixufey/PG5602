@@ -43,8 +43,24 @@ struct ProductListView: View {
     @State var isPresentingAddProductView: Bool
     
     
-    // Textfield attributes
+    // STATES: Textfield attributes
     @State var newProductName: String = ""
+    @State var newProductDescription: String = ""
+    @State var newProductPrice: String = ""
+    
+    
+    func addProduct() {
+        print("User still tapped btn")
+        
+        // parse int for price if doable
+        if let productPrice = Int(newProductPrice) {
+            let product = Product(name: newProductName, description: newProductDescription, price: productPrice)
+            
+            products.append(product)
+        } else {
+            print("Parse format error _\(newProductPrice)_")
+        }
+    }
     
     var body: some View {
         
@@ -84,26 +100,50 @@ struct ProductListView: View {
                 } // ifelse
             } // list
             .sheet(isPresented: $isPresentingAddProductView) {
-                
-                VStack(alignment: .trailing) {
-                    
-                    HStack {
-                        Text("Legg til nytt produkt")
-                            .font(.title)
-                            .padding(30)
-                        
-                        
-                        Spacer()
-                    } // title Hstack
-                    
-                    // binding with $ and the value will be bound to the variable
-                    TextField("Produktnavn", text: $newProductName)
-                    
-                    
-                    Spacer()
+                // Swift dislike adding mutiple sheets stacked together so we refactored
+                // the Add product into a new View....
+                AddProductView() { product in
+                    print(product)
                 }
                 
-            }
+                //                Refactored into a new View as AddProductView()
+                //                VStack(alignment: .trailing) {
+                //
+                //                    HStack {
+                //                        Text("Legg til nytt produkt")
+                //                            .font(.title)
+                //                            .padding(30)
+                //
+                //
+                //                        Spacer()
+                //                    } // title Hstack
+                //
+                //                    // binding with $ and the value will be bound to the variable
+                //                    TextField("Produktnavn", text: $newProductName)
+                //                    TextField("Beskrivelse", text: $newProductDescription)
+                //                    TextField("Pris", text: $newProductPrice)
+                //
+                //
+                //                    // Saving the state from userinput
+                //                    Button {
+                //                        // 1 user tapped button
+                //                        print("user tapped button")
+                //                        addProduct()
+                //                    } label: {
+                //                        // This Button returns a View
+                //                        VStack {
+                //                            Text("Lagre")
+                //                            Text("Produkt")
+                //                        }
+                //                    }
+                //
+                //
+                //                    Spacer()
+                //                }
+                
+            }// Sheet
+            
+            
         } // navStack
     } // body
 }
