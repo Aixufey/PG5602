@@ -65,20 +65,51 @@ struct ProductListView: View {
     var body: some View {
         
         NavigationStack {
-            List{
+            
+            ScrollView {
                 // \.self is required if using a List to generate items
                 // ForEach(products, id:  \.self){product in
                 ForEach(products) { product in
                     
                     // Navigate to item
-                    NavigationLink {
-                        ProductDTView(product: product)
+                    HStack {
+                        NavigationLink {
+                            ProductDTView(product: product)
+                            
+                            // label is expecting view builder so we refactored the code as method
+                        } label: {
+                            ListItemView(product: product)
+                            
+                        } // Navigationlink Label
                         
-                        // label is expecting view builder so we refactored the code as method
-                    } label: {
-                        ListItemView(product: product)
+                        Spacer()
                         
-                    } // label
+                        // Admin shall not shop so hide the btn if Admin is true
+                        if isAdmin == false {
+                            UpdateProductView(minusButtonTapped: {
+                                var hasRemoved = false
+                                shoppingCart.removeAll { predicateProduct in
+                                    if product.id == predicateProduct.id && hasRemoved == false {
+                                        hasRemoved = true
+                                        return true
+                                    }
+                                    return false
+                                }
+                                print(shoppingCart)
+                                
+                            }, plusButtonTapped: {
+                                shoppingCart.append(product)
+                                print(shoppingCart)
+                                
+                            })
+                            .padding()
+                            .frame(width: 140)
+                        } else { // isAdmin scope
+                            
+                        }
+                        
+                        
+                    } // HStack
                     
                 } // foreach
                 
@@ -98,7 +129,7 @@ struct ProductListView: View {
                     // not admin
                     Text("Not admin")
                 } // ifelse
-            } // list
+            } // ScrollView
             .sheet(isPresented: $isPresentingAddProductView) {
                 // Swift dislike adding mutiple sheets stacked together so we refactored
                 // the Add product into a new View....
@@ -158,7 +189,7 @@ struct ProductListView: View {
 // Preview has admin access to show Button logic
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView(products: Product.demoProducts, isAdmin: true, userlvl: UserLevel.admin)
+        ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin)
     }
 }
 

@@ -21,6 +21,9 @@ struct Product: Identifiable {
     
 }
 
+// var shoppingCart: [Product] = []
+var shoppingCart = [Product]() // () is to initialize the member, because Swift doesn't allow field value to be nil.
+
 
 // This is globally available
 // namespace this

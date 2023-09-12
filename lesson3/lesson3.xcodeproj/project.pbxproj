@@ -14,6 +14,7 @@
 		71AB64802AA5E6CE009A2B6F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */; };
 		71AB64822AA5E6D0009A2B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71AB64812AA5E6D0009A2B6F /* Assets.xcassets */; };
 		71AB64852AA5E6D0009A2B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71AB64842AA5E6D0009A2B6F /* Preview Assets.xcassets */; };
+		71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEC4C62AB073F900C07393 /* UpdateProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		71AB64812AA5E6D0009A2B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71AB64842AA5E6D0009A2B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71AEC4C62AB073F900C07393 /* UpdateProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */,
+				71AEC4C62AB073F900C07393 /* UpdateProductView.swift */,
 				717F44B32AAF2831000DCFE4 /* AddProductView.swift */,
 				71A2AE272AA6067B00F97E60 /* ProductDTView.swift */,
 				71AB647D2AA5E6CE009A2B6F /* lesson3App.swift */,
@@ -149,6 +152,7 @@
 				71A2AE282AA6067B00F97E60 /* ProductDTView.swift in Sources */,
 				71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */,
 				71AB64802AA5E6CE009A2B6F /* ProductListView.swift in Sources */,
+				71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */,
 				71AB647E2AA5E6CE009A2B6F /* lesson3App.swift in Sources */,
 				717F44B42AAF2831000DCFE4 /* AddProductView.swift in Sources */,
 			);

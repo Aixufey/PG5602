@@ -8,13 +8,60 @@
 import SwiftUI
 
 struct UpdateProductView: View {
+    
+    // Since we created this as separated view we need to handle some events
+    // We are sending in two closures of type func as arguments
+    var minusButtonTapped: () -> Void
+    var plusButtonTapped: () -> ()
+    
+    // In Swift we have to initialize fields with default values
+    init(minusButtonTapped:@escaping () -> (), plusButtonTapped:@escaping () -> Void) {
+        self.minusButtonTapped = minusButtonTapped
+        self.plusButtonTapped = plusButtonTapped
+    }
+    
+    // @State var demoText: String = ""
+    
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        HStack {
+            
+            ZStack {
+                Circle()
+                Text("-")
+                    .foregroundColor(.white)
+            }.onTapGesture {
+                // tapped -btn
+                // demoText = "Tapped -"
+                minusButtonTapped()
+            }
+            
+            ZStack {
+                Circle()
+                Text("+")
+                    .foregroundColor(.white)
+            }.onTapGesture {
+                // demoText = "Tapped +"
+                // tapped +btn
+                plusButtonTapped()
+            }
+            
+        }.font(.largeTitle)
     }
 }
 
+
+
 struct UpdateProductView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateProductView()
+        // In preview we can compile the View signature - how to call this with 2 func
+        UpdateProductView(minusButtonTapped: {
+            return ()
+        }, plusButtonTapped: {
+            return ()
+        })
     }
 }
