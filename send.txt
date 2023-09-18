@@ -1,0 +1,65 @@
+import SwiftUI
+
+
+
+
+struct ProductListView: View {
+    let isAdmin: Bool
+    
+    init(products: [Product], isAdmin: Bool) {
+        self.products = products
+        self.isAdmin = isAdmin
+        self.isPresentingAddProductView = false
+    }
+
+    @State var isPresentingAddProductView: Bool
+
+    @State var newProductName: String = ""
+    @State var newProductDescription: String = ""
+    @State var newProductPrice: String = ""
+    
+
+func addProduct() {
+        print("User still tapped btn")
+        if let productPrice = Int(newProductPrice) {
+            let product = Product(name: newProductName, description: 
+newProductDescription, price: productPrice)
+            products.append(product)
+        } else {
+            print("Parse format error _\(newProductPrice)_")
+        }
+    }
+    var body: some View {   
+        NavigationStack {
+            List{
+                ForEach(products) { product in
+                    NavigationLink {
+                        ProductDTView(product: product)
+                    } label: {
+                        ListItemView(product: product)
+                    } // label
+                } // foreach
+                if isAdmin {
+                    Button("Legg til produkt") {
+                        let newProduct = Product.init(name: "Sokker", 
+description: "small, yellow", price: 99)
+                        let newProduct2 = Product.init(name: "test", 
+description: "test", price: 100)
+                        products.append(newProduct)
+                        products.append(newProduct2)             
+                        isPresentingAddProductView = true
+                    } // button
+                } else {
+                    // not admin
+                    Text("Not admin")
+                } // ifelse
+            } // list
+            .sheet(isPresented: $isPresentingAddProductView) {
+                AddProductView() { product in
+                    print(product)
+                }
+            }// Sheet
+        } // navStack
+    } // body
+}
+

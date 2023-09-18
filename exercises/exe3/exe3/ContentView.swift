@@ -38,6 +38,7 @@ struct ContentView: View {
              ContactVerticalListView(contacts: contacts)
             
             
+            // Add contact button View
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
@@ -49,6 +50,7 @@ struct ContentView: View {
                     print("Sheet showing")
                 }
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+                
             } // add new Contact button
             .sheet(isPresented: $isPresentingAddContactView) {
                 
@@ -73,6 +75,7 @@ struct ContentView: View {
                         isPresentingAddContactView = false
                     }
                 }
+                
             } // Sheet
             
             

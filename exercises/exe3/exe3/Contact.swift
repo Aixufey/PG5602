@@ -24,3 +24,13 @@ struct Contact: Identifiable {
         self.img = img
     }
 }
+
+var contactList = [Contact]()
+
+extension Contact {
+    static let demoContacts = [
+        Contact.init(firstName: "John", lastName: "Wick", description: "A very dangerous man", img: "coder"),
+        Contact.init(firstName: "Motoko", lastName: "Kusanagi", description: "", img: "linux"),
+        Contact.init(firstName: "Batou", lastName: "", description: "", img: "kodama"),
+    ]
+}

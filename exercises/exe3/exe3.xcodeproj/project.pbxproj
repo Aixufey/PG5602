@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7100A4C22AA76E6A00E5540D /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100A4C12AA76E6A00E5540D /* ContactRowView.swift */; };
+		718F4A702AB313ED004719DD /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F4A6F2AB313ED004719DD /* AddContactView.swift */; };
 		71A2AE362AA60F3700F97E60 /* exe3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2AE352AA60F3700F97E60 /* exe3App.swift */; };
 		71A2AE382AA60F3700F97E60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2AE372AA60F3700F97E60 /* ContentView.swift */; };
 		71A2AE3A2AA60F3900F97E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A2AE392AA60F3900F97E60 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		7100A4C12AA76E6A00E5540D /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
+		718F4A6F2AB313ED004719DD /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		71A2AE322AA60F3700F97E60 /* exe3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exe3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A2AE352AA60F3700F97E60 /* exe3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exe3App.swift; sourceTree = "<group>"; };
 		71A2AE372AA60F3700F97E60 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,12 +63,13 @@
 			children = (
 				71A2AE352AA60F3700F97E60 /* exe3App.swift */,
 				71A2AE372AA60F3700F97E60 /* ContentView.swift */,
+				718F4A6F2AB313ED004719DD /* AddContactView.swift */,
 				71B9522D2AA8FDE300DB921C /* CardView.swift */,
 				71E1B8F12AA8EC8D0016EBD0 /* ContactVerticalListView.swift */,
 				7100A4C12AA76E6A00E5540D /* ContactRowView.swift */,
+				71E1B8EF2AA8E7DB0016EBD0 /* Contact.swift */,
 				71A2AE392AA60F3900F97E60 /* Assets.xcassets */,
 				71A2AE3B2AA60F3900F97E60 /* Preview Content */,
-				71E1B8EF2AA8E7DB0016EBD0 /* Contact.swift */,
 			);
 			path = exe3;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				71A2AE362AA60F3700F97E60 /* exe3App.swift in Sources */,
 				71E1B8F22AA8EC8D0016EBD0 /* ContactVerticalListView.swift in Sources */,
 				71B9522E2AA8FDE300DB921C /* CardView.swift in Sources */,
+				718F4A702AB313ED004719DD /* AddContactView.swift in Sources */,
 				7100A4C22AA76E6A00E5540D /* ContactRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
