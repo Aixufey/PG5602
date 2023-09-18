@@ -17,14 +17,52 @@ struct ProductDTView: View {
     
     var body: some View {
         VStack {
-            Text(product.name)
+            
+            HStack {
+                Text(product.name)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(EdgeInsets(top: 40, leading: 40, bottom: 0, trailing: 0))
+                Spacer() // Push the title to the left
+            } // HStack Title
+            Image("productImage")
+                .resizable()
+            //.scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
+            
+            
             Text(product.description)
+                .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+            
+            Spacer()
+            Text("Før \(product.price + Int.random(in: 10...400)) kr")
+                .strikethrough()
+                .padding(.top)
+            Text("Nå \(product.price) kr")
+                .padding(.top)
+            
+            Button {
+                // TODO: buy product
+            } label: {
+                ZStack {
+                    Circle()
+                        .frame(width: 100)
+                    .foregroundColor(.orange)
+            
+                    Text("Kjøp")
+                        .foregroundColor(.black)
+                        .fontWeight(.bold)
+                }
+                
+            }
+
         }
     }
 }
 
 struct ProductDTView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDTView(product: .init(name: "This is a test", description: "Only visible for this view", price: 500))
+        ProductDTView(product: .init(name: "Nike SB", description: "White shoes", price: 1500))
     }
 }

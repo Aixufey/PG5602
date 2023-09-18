@@ -21,14 +21,16 @@ struct ProductListView: View {
     let isAdmin: Bool
     
     // Initialize an array of type Product
-    init(products: [Product], isAdmin: Bool, userlvl: UserLevel) {
+    init(products: [Product], isAdmin: Bool, userlvl: UserLevel, shoppingCart: Binding<[Product]>) {
         self.products = products
         self.isAdmin = isAdmin
         self.userlvl = userlvl
         self.isPresentingAddProductView = false
+        self.shoppingCart = shoppingCart
     }
     
-    
+    // Type binding declaration
+    var shoppingCart: Binding<[Product]>
     
     // Field needs to be self instantiated
     // @State is annotation for wiring to update the status for mutating objects
@@ -88,7 +90,7 @@ struct ProductListView: View {
                         if isAdmin == false {
                             UpdateProductView(minusButtonTapped: {
                                 var hasRemoved = false
-                                shoppingCart.removeAll { predicateProduct in
+                                shoppingCart.wrappedValue.removeAll { predicateProduct in
                                     if product.id == predicateProduct.id && hasRemoved == false {
                                         hasRemoved = true
                                         return true
@@ -98,7 +100,8 @@ struct ProductListView: View {
                                 print(shoppingCart)
                                 
                             }, plusButtonTapped: {
-                                shoppingCart.append(product)
+                                // Getting bindings value need a wrapping
+                                shoppingCart.wrappedValue.append(product)
                                 print(shoppingCart)
                                 
                             })
@@ -189,7 +192,7 @@ struct ProductListView: View {
 // Preview has admin access to show Button logic
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin)
+        ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin, shoppingCart: .constant([]))
     }
 }
 

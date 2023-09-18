@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFC2AB86D290084F54D /* ShoppingChartView.swift */; };
+		71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFE2AB86DCC0084F54D /* SettingsView.swift */; };
 		717F44B42AAF2831000DCFE4 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F44B32AAF2831000DCFE4 /* AddProductView.swift */; };
 		71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2AE252AA5F90E00F97E60 /* Product.swift */; };
 		71A2AE282AA6067B00F97E60 /* ProductDTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2AE272AA6067B00F97E60 /* ProductDTView.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71712DFC2AB86D290084F54D /* ShoppingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingChartView.swift; sourceTree = "<group>"; };
+		71712DFE2AB86DCC0084F54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		717F44B32AAF2831000DCFE4 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		71A2AE252AA5F90E00F97E60 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		71A2AE272AA6067B00F97E60 /* ProductDTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */,
+				71712DFE2AB86DCC0084F54D /* SettingsView.swift */,
+				71712DFC2AB86D290084F54D /* ShoppingChartView.swift */,
 				71AEC4C62AB073F900C07393 /* UpdateProductView.swift */,
 				717F44B32AAF2831000DCFE4 /* AddProductView.swift */,
 				71A2AE272AA6067B00F97E60 /* ProductDTView.swift */,
@@ -150,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A2AE282AA6067B00F97E60 /* ProductDTView.swift in Sources */,
+				71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */,
+				71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */,
 				71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */,
 				71AB64802AA5E6CE009A2B6F /* ProductListView.swift in Sources */,
 				71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */,
