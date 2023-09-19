@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7110D9EF2AB9B21F00C71468 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110D9EE2AB9B21F00C71468 /* ProfileView.swift */; };
 		71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFC2AB86D290084F54D /* ShoppingChartView.swift */; };
 		71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFE2AB86DCC0084F54D /* SettingsView.swift */; };
 		717F44B42AAF2831000DCFE4 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F44B32AAF2831000DCFE4 /* AddProductView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7110D9EE2AB9B21F00C71468 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		71712DFC2AB86D290084F54D /* ShoppingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingChartView.swift; sourceTree = "<group>"; };
 		71712DFE2AB86DCC0084F54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		717F44B32AAF2831000DCFE4 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */,
 				71712DFE2AB86DCC0084F54D /* SettingsView.swift */,
+				7110D9EE2AB9B21F00C71468 /* ProfileView.swift */,
 				71712DFC2AB86D290084F54D /* ShoppingChartView.swift */,
 				71AEC4C62AB073F900C07393 /* UpdateProductView.swift */,
 				717F44B32AAF2831000DCFE4 /* AddProductView.swift */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A2AE282AA6067B00F97E60 /* ProductDTView.swift in Sources */,
+				7110D9EF2AB9B21F00C71468 /* ProfileView.swift in Sources */,
 				71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */,
 				71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */,
 				71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */,

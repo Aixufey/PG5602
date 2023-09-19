@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ShoppingChartView: View {
     var body: some View {
-        Text("Shopping Chart")
+        NavigationView {
+            VStack {
+                
+            }
+            .navigationTitle("Handlekurv")
+        }
+        
     }
 }
 
