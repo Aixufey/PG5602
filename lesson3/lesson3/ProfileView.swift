@@ -29,7 +29,7 @@ struct ProfileView: View {
         if let username = UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) as? String {
             self.username = username
         }
-        //print(username as Any)
+        print(username as Any)
     }
      
     func createUserTapped() {
@@ -64,7 +64,7 @@ struct ProfileView: View {
                 
             }, set: { newValue, transaction in
                 // Set value to username
-                username = newValue
+                username = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
             }))
             .border(.black, width: 1)
             .padding(.horizontal, 50)
@@ -73,31 +73,34 @@ struct ProfileView: View {
             
             Button("Opprett bruker") {
                 // print("username is nil on load:\($username.wrappedValue)")
-                if username != nil {
+                if username != nil, username != "", username!.count > 5 {
                     createUserTapped()
                 } else {
                     // print("username is nil")
-                    isShowingAlert = true
+                    username = nil
+                    print(username as Any)
                 }
-            }
-            .alert("Username is empty", isPresented: $isShowingAlert) {
-                Button("OK") {}
+                isShowingAlert = true
             }
             .padding()
             
             
-            if username != nil {
+            // username != nil, !username!.isEmpty,
+            if UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) != nil {
                 Button("Slett bruker") {
                     deleteUserTapped()
                 }.padding()
             }
             
         }
-        .alert("Username cannot be empty", isPresented: $isShowingAlert) {
-            Button("OK") {}
-        }
         .onAppear {
             onAppear()
+        }
+        .alert("Character must be greater than \(username?.count ?? 0)", isPresented: $isShowingAlert) {
+            Button("OK") {
+                isShowingAlert = false
+                username = nil
+            }
         }
     }
 }
