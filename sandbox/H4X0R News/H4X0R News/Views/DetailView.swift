@@ -7,17 +7,22 @@
 
 import SwiftUI
 
+// DetailView get passed in an URL
 struct DetailView: View {
     let url: String?
     
     var body: some View {
-        Text("Hello World!")
+        // Then creating a WebView and pass in the URL we get
+        WebView(urlString: url)
+        
     }
     
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(url: "https://www.google.com")
+        DetailView(url: "https://www.unsplash.com")
     }
 }
+
+

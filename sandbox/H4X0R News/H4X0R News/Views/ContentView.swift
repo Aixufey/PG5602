@@ -22,9 +22,11 @@ struct ContentView: View {
             // Since rowContent is a closure in the end ... trailing we can write it outside
             List(networkManager.posts) { post in
                 // For each post in closure, returns a View
-                HStack {
-                    Text(String(post.points))
-                    Text(post.title)
+                NavigationLink(destination: DetailView(url: post.url)) {
+                    HStack {
+                        Text(String(post.points))
+                        Text(post.title)
+                    }
                 }
                 
             }

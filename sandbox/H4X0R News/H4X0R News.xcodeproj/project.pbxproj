@@ -14,6 +14,7 @@
 		710F43042AB8CBC100466142 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F43032AB8CBC100466142 /* NetworkManager.swift */; };
 		710F43062AB8CCDF00466142 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F43052AB8CCDF00466142 /* PostData.swift */; };
 		710F43092AB8F52F00466142 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F43082AB8F52F00466142 /* DetailView.swift */; };
+		7110E2B32ABA3725005CB43E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110E2B22ABA3725005CB43E /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		710F43032AB8CBC100466142 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		710F43052AB8CCDF00466142 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		710F43082AB8F52F00466142 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		7110E2B22ABA3725005CB43E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				710F42F52AB8C05600466142 /* ContentView.swift */,
 				710F43082AB8F52F00466142 /* DetailView.swift */,
+				7110E2B22ABA3725005CB43E /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				710F43042AB8CBC100466142 /* NetworkManager.swift in Sources */,
 				710F43062AB8CCDF00466142 /* PostData.swift in Sources */,
 				710F42F62AB8C05600466142 /* ContentView.swift in Sources */,
+				7110E2B32ABA3725005CB43E /* WebView.swift in Sources */,
 				710F43092AB8F52F00466142 /* DetailView.swift in Sources */,
 				710F42F42AB8C05600466142 /* H4X0R_NewsApp.swift in Sources */,
 			);
