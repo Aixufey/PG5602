@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import KeychainSwift
 
 @main
 struct lesson3App: App {
     
     
     @State var shoppingCart = [Product]()
+    @State var usernameStillExist: Bool = false
     
     var body: some Scene {
         WindowGroup {
@@ -21,9 +23,19 @@ struct lesson3App: App {
                 // Usually API response will be sent into this view
                 // TODO: Privileges should be a login to give access
                 // Tab 1
-                ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin, shoppingCart: $shoppingCart)
+                ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin, shoppingCart: $shoppingCart, usernameStillExist: $usernameStillExist)
                     .tabItem {
                         Label("Produkter", systemImage: "tray.and.arrow.down.fill")
+                    }
+                    .onAppear {
+                        
+                        print("ProductScreen isFocused")
+                        if UserDefaults().object(forKey: AppStorageKeys.username.rawValue) != nil {
+                            usernameStillExist = true
+                        } else {
+                            usernameStillExist = false
+                        }
+                        print("usernameStillExist: \(usernameStillExist)")
                     }
                 // Tab 2
                 ShoppingChartView()

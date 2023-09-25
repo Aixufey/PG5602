@@ -6,22 +6,30 @@
 //
 
 import SwiftUI
+import KeychainSwift
 
 enum AppStorageKeys: String {
     case username
+    case password
 }
 
+enum AlertMessage: String {
+    case usernameEmpty = "Character must be greater than 5"
+    case passwordEmpty = "Password is empty"
+}
 
 struct ProfileView: View {
     
     //@AppStorage(AppStorageKeys.username.rawValue) var username: String?
     @State var username: String?
+    @State var password = ""
     
     // @Binding var isLoggedIn: Bool -> use when inside View
     // var isLoggedIn: Binding<Bool> { } -> use Type casting inside constructor for instance init to accept from across views
     @State var isLoggedIn: Bool = false
     
     @State var isShowingAlert: Bool = false
+    @State var _alertMessage: AlertMessage = .usernameEmpty
     
     func onAppear() {
         // Protocol for AppStorage: Check if logged in
@@ -29,11 +37,22 @@ struct ProfileView: View {
         if let username = UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) as? String {
             self.username = username
         }
+        
+        let keychain = KeychainSwift()
+        if let password = keychain.get(AppStorageKeys.password.rawValue) {
+            self.password = password
+        }
         print(username as Any)
     }
-     
+    
     func createUserTapped() {
         print("inside")
+        
+        // using package keychain
+        let keychain = KeychainSwift()
+        keychain.set(password, forKey: AppStorageKeys.password.rawValue)
+        
+        
         if username != "" {
             print("created")
             UserDefaults.standard.setValue(username, forKey: AppStorageKeys.username.rawValue)
@@ -46,57 +65,84 @@ struct ProfileView: View {
     func deleteUserTapped() {
         // print("Delete tapped")
         UserDefaults.standard.removeObject(forKey: AppStorageKeys.username.rawValue)
+        let keychain = KeychainSwift()
+        keychain.delete(AppStorageKeys.password.rawValue)
+        keychain.clear() // wipe all from iCloud keychain
+        
         username = nil
+        password = ""
         isLoggedIn = false
     }
     
     var body: some View {
         // Binding does not accept String values, but we can use get and set to return string val
         VStack {
-            TextField("Brukernavn", text: Binding(get: {
+            Form {
+                TextField("Brukernavn", text: Binding(get: {
+                    
+                    // Binding username if exist
+                    if let username = username {
+                        return username
+                    }
+                    // Else return empty string
+                    return ""
+                    
+                }, set: { newValue, transaction in
+                    // Set value to username
+                    username = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
+                }))
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
                 
-                // Binding username if exist
-                if let username = username {
-                    return username
+                // Password
+                SecureField("Passord", text: $password)
+                    .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
+                    
+                
+//                Button("Opprett bruker") {
+//                    // print("username is nil on load:\($username.wrappedValue)")
+//                    if username != nil, username != "", username!.count > 5 {
+//                        createUserTapped()
+//                    } else {
+//                        // print("username is nil")
+//                        username = nil
+//                        print(username as Any)
+//                    }
+//                    isShowingAlert = true
+//                }
+//                .padding()
+                
+                
+                // username != nil, !username!.isEmpty,
+                if UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) != nil {
+                    Button("Slett bruker") {
+                        deleteUserTapped()
+                    }.padding()
                 }
-                // Else return empty string
-                return ""
-                
-            }, set: { newValue, transaction in
-                // Set value to username
-                username = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
-            }))
-            .border(.black, width: 1)
-            .padding(.horizontal, 50)
-            .textFieldStyle(.roundedBorder)
-            
-            
+            } // Form
             Button("Opprett bruker") {
                 // print("username is nil on load:\($username.wrappedValue)")
-                if username != nil, username != "", username!.count > 5 {
+                if username != nil, username != "", username!.count >= 5 {
                     createUserTapped()
-                } else {
+                } else if username == nil || username == "" {
                     // print("username is nil")
-                    username = nil
                     print(username as Any)
+                    isShowingAlert = true
+                    self._alertMessage = .usernameEmpty
+                } else {
+                    self._alertMessage = .passwordEmpty
+                    isShowingAlert = true
                 }
-                isShowingAlert = true
             }
             .padding()
             
-            
-            // username != nil, !username!.isEmpty,
-            if UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) != nil {
-                Button("Slett bruker") {
-                    deleteUserTapped()
-                }.padding()
-            }
-            
-        }
+        } // vstack
         .onAppear {
             onAppear()
+            
         }
-        .alert("Character must be greater than \(username?.count ?? 0)", isPresented: $isShowingAlert) {
+        .alert("\(_alertMessage.rawValue)", isPresented: $isShowingAlert) {
             Button("OK") {
                 isShowingAlert = false
                 username = nil

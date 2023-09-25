@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeychainSwift
 
 // Privileges
 enum UserLevel {
@@ -19,14 +20,16 @@ enum UserLevel {
 struct ProductListView: View {
     let userlvl: UserLevel
     let isAdmin: Bool
+    let usernameStillExist: Binding<Bool>
     
     // Initialize an array of type Product
-    init(products: [Product], isAdmin: Bool, userlvl: UserLevel, shoppingCart: Binding<[Product]>) {
+    init(products: [Product], isAdmin: Bool, userlvl: UserLevel, shoppingCart: Binding<[Product]>, usernameStillExist: Binding<Bool>) {
         self.products = products
         self.isAdmin = isAdmin
         self.userlvl = userlvl
         self.isPresentingAddProductView = false
         self.shoppingCart = shoppingCart
+        self.usernameStillExist = usernameStillExist
     }
     
     // Type binding declaration
@@ -38,7 +41,6 @@ struct ProductListView: View {
     //@Published
     //@ObservedObject
     @State var products: [Product]
-    
     
     
     // self init as false
@@ -129,11 +131,29 @@ struct ProductListView: View {
                         isPresentingAddProductView = true
                     } // button
                 } else {
-                    // not admin
-                    Text("Not admin")
+                    
+                    // Feedback to display if the user is logged in.
+                    if usernameStillExist.wrappedValue == true {
+                        if let username = UserDefaults().object(forKey: AppStorageKeys.username.rawValue) as? String {
+                            
+                            Text("Logged in \(username)")
+                        }
+                    } else {
+                        Text("Logged out")
+                    }
+//                    if KeychainSwift().get(AppStorageKeys.password.rawValue) != nil, let username = UserDefaults().object(forKey: AppStorageKeys.username.rawValue) as? String {
+//
+//                        Text("Du er en vanlig bruker, logget inn \(username).")
+//                    } else {
+//                        Text("Du er en vanlig bruker, ikke logget inn")
+//
+//                    }
+                    
+                    
                 } // ifelse
             } // ScrollView
             .sheet(isPresented: $isPresentingAddProductView) {
+                
                 // Swift dislike adding mutiple sheets stacked together so we refactored
                 // the Add product into a new View....
                 // Initializing the view with a Struct signature that is a function INIT
@@ -192,7 +212,7 @@ struct ProductListView: View {
 // Preview has admin access to show Button logic
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin, shoppingCart: .constant([]))
+        ProductListView(products: Product.demoProducts, isAdmin: false, userlvl: UserLevel.admin, shoppingCart: .constant([]), usernameStillExist: .constant(true))
     }
 }
 
