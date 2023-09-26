@@ -123,9 +123,9 @@ struct ProfileView: View {
             } // Form
             Button("Opprett bruker") {
                 // print("username is nil on load:\($username.wrappedValue)")
-                if username != nil, username != "", username!.count >= 5 {
+                if username != nil, username != "", username!.count >= 5, password != "" {
                     createUserTapped()
-                } else if username == nil || username == "" {
+                } else if username == nil || username == "" || username!.count < 5 {
                     // print("username is nil")
                     print(username as Any)
                     isShowingAlert = true
@@ -145,7 +145,8 @@ struct ProfileView: View {
         .alert("\(_alertMessage.rawValue)", isPresented: $isShowingAlert) {
             Button("OK") {
                 isShowingAlert = false
-                username = nil
+                //username = nil
+                password = ""
             }
         }
     }

@@ -63,6 +63,6 @@ struct ProductDTView: View {
 
 struct ProductDTView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDTView(product: .init(name: "Nike SB", description: "White shoes", price: 1500))
+        ProductDTView(product: .init(name: "Nike SB", description: "White shoes", price: 1500, images: []))
     }
 }

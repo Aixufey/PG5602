@@ -26,7 +26,7 @@ struct AddProductView: View {
     func addProduct() {
         // if with bool check oneliner
         if let productPrice = Int(newProductPrice) {
-            let product = Product(name: newProductName, description: newProductDescription, price: productPrice)
+            let product = Product(name: newProductName, description: newProductDescription, price: productPrice, images: [])
             didAddProduct(product)
             
         } else {

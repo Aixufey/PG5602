@@ -58,7 +58,7 @@ struct ProductListView: View {
         
         // parse int for price if doable
         if let productPrice = Int(newProductPrice) {
-            let product = Product(name: newProductName, description: newProductDescription, price: productPrice)
+            let product = Product(name: newProductName, description: newProductDescription, price: productPrice, images: [])
             
             products.append(product)
         } else {
@@ -120,8 +120,8 @@ struct ProductListView: View {
                 
                 if isAdmin {
                     Button("Legg til produkt") {
-                        let newProduct = Product.init(name: "Sokker", description: "small, yellow", price: 99)
-                        let newProduct2 = Product.init(name: "test", description: "test", price: 100)
+                        let newProduct = Product.init(name: "Sokker", description: "small, yellow", price: 99, images: [])
+                        let newProduct2 = Product.init(name: "test", description: "test", price: 100, images: [])
                         
                         products.append(newProduct)
                         products.append(newProduct2)
