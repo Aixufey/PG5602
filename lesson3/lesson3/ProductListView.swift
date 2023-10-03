@@ -93,7 +93,9 @@ struct ProductListView: View {
                             UpdateProductView(minusButtonTapped: {
                                 var hasRemoved = false
                                 shoppingCart.wrappedValue.removeAll { predicateProduct in
-                                    if product.id == predicateProduct.id && hasRemoved == false {
+                                    // Since ID is UUID and randomly generated everytime App starts
+                                    // We cant delete the persistent data, so predicate on name instead.
+                                    if product.name == predicateProduct.name && hasRemoved == false {
                                         hasRemoved = true
                                         return true
                                     }

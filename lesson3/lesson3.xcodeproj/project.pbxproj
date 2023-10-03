@@ -99,6 +99,7 @@
 		71AB647C2AA5E6CE009A2B6F /* lesson3 */ = {
 			isa = PBXGroup;
 			children = (
+				71751E902AC2FA0200897EAF /* ProductImage.swift */,
 				71A2AE252AA5F90E00F97E60 /* Product.swift */,
 				71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */,
 				71712DFE2AB86DCC0084F54D /* SettingsView.swift */,
@@ -110,7 +111,6 @@
 				71AB647D2AA5E6CE009A2B6F /* lesson3App.swift */,
 				71AB64812AA5E6D0009A2B6F /* Assets.xcassets */,
 				71AB64832AA5E6D0009A2B6F /* Preview Content */,
-				71751E902AC2FA0200897EAF /* ProductImage.swift */,
 			);
 			path = lesson3;
 			sourceTree = "<group>";
