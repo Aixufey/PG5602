@@ -24,7 +24,7 @@ struct Product: Identifiable, Codable {
     // Using enum to declare Entity if the restAPI has weird names
     enum CodingKeys: String, CodingKey {
         case name
-        case description = "Description"
+        case description = "desc"
         case price
         case images = "product_images"
         case id

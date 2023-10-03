@@ -15,6 +15,9 @@ enum UserLevel {
     case employee
 }
 
+enum MyError : Error {
+    case runTimeError(String)
+}
 
 
 struct ProductListView: View {
@@ -65,6 +68,83 @@ struct ProductListView: View {
             print("Parse format error _\(newProductPrice)_")
         }
     }
+    
+    
+    func onAppear() {
+        
+        //getWithClosures()
+        
+        // Modern way - Concurrency multithreading
+        Task {
+            var urlRequest = URLRequest.init(url: URL.init(string:"https://raw.githubusercontent.com/BeiningBogen/PG5602/master/products.json")!)
+            urlRequest.httpMethod = "GET"
+            do {
+                // URLSession returning (data, response) as a Tuple
+                let (data, response) = await try
+                URLSession.shared.data(for: urlRequest)
+                
+                // guard is a Premise in case we dont get ANY statusCode at all
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 200
+                else {
+                    // Throw error
+                    throw MyError.runTimeError("NO STATUS CODE FROM RESPONSE!!")
+                }
+                
+                let stringResponse = String.init(data: data, encoding: .utf8)
+                print(stringResponse)
+                
+                
+                let products = try JSONDecoder().decode([Product].self, from: data)
+                
+                print(products)
+                
+                print(statusCode)
+                DispatchQueue.main.async {
+                    
+                    self.products = products
+                }
+                
+            } catch let error {
+                
+            }
+        } // Task
+    }
+    
+    // HTTP request test with closures
+    func getWithClosures() {
+        var urlRequest = URLRequest(url: URL.init(string:"https://raw.githubusercontent.com/BeiningBogen/PG5602/master/products.json")!)
+        urlRequest.httpMethod = "GET"
+        
+        let httptask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse?.statusCode)
+            
+            if let data = data {
+                let stringResponse = String.init(data: data, encoding: .utf8)
+                
+                do {
+                    let products = try
+                    JSONDecoder().decode([Product].self, from: data)
+                    
+                    // product is a state that is rendering on main view, in iOS only Thread 1 can render
+                    // View and UI, dispatch this to main thread to render / update
+                    DispatchQueue.main.async {
+                        self.products = products
+                    }
+                    
+                } catch let jsonError {
+                    print(jsonError)
+                }
+                
+                print(products)
+            
+            } else {
+                print("No data received")
+            }
+        }
+        httptask.resume()
+    }
+    
     
     var body: some View {
         
@@ -168,45 +248,13 @@ struct ProductListView: View {
                     isPresentingAddProductView = false
                 }
                 
-                //                Refactored into a new View as AddProductView()
-                //                VStack(alignment: .trailing) {
-                //
-                //                    HStack {
-                //                        Text("Legg til nytt produkt")
-                //                            .font(.title)
-                //                            .padding(30)
-                //
-                //
-                //                        Spacer()
-                //                    } // title Hstack
-                //
-                //                    // binding with $ and the value will be bound to the variable
-                //                    TextField("Produktnavn", text: $newProductName)
-                //                    TextField("Beskrivelse", text: $newProductDescription)
-                //                    TextField("Pris", text: $newProductPrice)
-                //
-                //
-                //                    // Saving the state from userinput
-                //                    Button {
-                //                        // 1 user tapped button
-                //                        print("user tapped button")
-                //                        addProduct()
-                //                    } label: {
-                //                        // This Button returns a View
-                //                        VStack {
-                //                            Text("Lagre")
-                //                            Text("Produkt")
-                //                        }
-                //                    }
-                //
-                //
-                //                    Spacer()
-                //                }
-                
             }// Sheet
             
-            
         } // navStack
+        .onAppear {
+            onAppear()
+        }
+        
     } // body
 }
 
