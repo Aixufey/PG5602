@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7110D9EF2AB9B21F00C71468 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110D9EE2AB9B21F00C71468 /* ProfileView.swift */; };
+		713C5D6F2AD40ABE00DB0647 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5D6E2AD40ABE00DB0647 /* APIClient.swift */; };
 		71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFC2AB86D290084F54D /* ShoppingChartView.swift */; };
 		71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712DFE2AB86DCC0084F54D /* SettingsView.swift */; };
 		71751E872AC2F46000897EAF /* lesson3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71751E862AC2F46000897EAF /* lesson3Tests.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		7110D9EE2AB9B21F00C71468 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		713C5D6E2AD40ABE00DB0647 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		71712DFC2AB86D290084F54D /* ShoppingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingChartView.swift; sourceTree = "<group>"; };
 		71712DFE2AB86DCC0084F54D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71751E842AC2F46000897EAF /* lesson3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lesson3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				71751E902AC2FA0200897EAF /* ProductImage.swift */,
 				71A2AE252AA5F90E00F97E60 /* Product.swift */,
 				71AB647F2AA5E6CE009A2B6F /* ProductListView.swift */,
+				713C5D6E2AD40ABE00DB0647 /* APIClient.swift */,
 				71712DFE2AB86DCC0084F54D /* SettingsView.swift */,
 				7110D9EE2AB9B21F00C71468 /* ProfileView.swift */,
 				71712DFC2AB86D290084F54D /* ShoppingChartView.swift */,
@@ -242,6 +245,7 @@
 				71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */,
 				71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */,
 				71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */,
+				713C5D6F2AD40ABE00DB0647 /* APIClient.swift in Sources */,
 				71AB64802AA5E6CE009A2B6F /* ProductListView.swift in Sources */,
 				71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */,
 				71751E912AC2FA0200897EAF /* ProductImage.swift in Sources */,

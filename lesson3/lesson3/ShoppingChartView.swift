@@ -9,6 +9,22 @@ import SwiftUI
 
 struct ShoppingChartView: View {
     
+//    let apiClient = APIClient.demo
+    let apiClient = APIClient.error(.stolenCard)
+    @State var isShowingError: Bool = false
+    @State var shownError: APIClientError? {
+        willSet {
+            if let _ = newValue {
+                isShowingError = true
+            } else {
+                isShowingError = false
+            }
+        }
+        didSet {
+            
+        }
+    }
+    
     var shoppingCart: Binding<[Product]>
     @State var totalSum: Int = 0
     
@@ -20,6 +36,24 @@ struct ShoppingChartView: View {
         totalSum = 0
         for product in shoppingCart {
             totalSum += product.wrappedValue.price
+        }
+    }
+    
+    func didTapPurchase() {
+        // Calling API client and send the request
+        Task {
+            do {
+                //print("Purchased clicked")
+                print(shoppingCart.wrappedValue)
+                try await apiClient.purchaseProducts(shoppingCart.wrappedValue)
+                
+                shoppingCart.wrappedValue = []
+                print(shoppingCart.wrappedValue)
+            } catch let error {
+                print(error)
+                shownError = error as? APIClientError
+                isShowingError = true // Show Sheet
+            }
         }
     }
     
@@ -49,13 +83,29 @@ struct ShoppingChartView: View {
                     .foregroundColor(.blue)
                 }
                 .navigationTitle("Handlekurv")
+                
+                // Purchase button
+                Button {
+                    didTapPurchase()
+                } label: {
+                    Spacer()
+                    Text("Kjøp \(shoppingCart.count) produkter")
+                    Spacer()
+                }
+                .buttonStyle(.bordered)
+                .padding()
+                .tint(.green)
+            } // VStack
+            .sheet(isPresented: $isShowingError) {
+                Text("Noe feil skjedde!")
+                
             }
-        }
+        } // Navigation
         .onAppear {
             onAppear()
         }
         
-    }
+    } // body
 }
 
 struct ShoppingChartView_Previews: PreviewProvider {
