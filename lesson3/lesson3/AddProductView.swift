@@ -16,12 +16,16 @@ struct AddProductView: View {
     }
     
     
+    
+    
     // STATES: Textfield attributes
     @State var newProductName: String = ""
     @State var newProductDescription: String = ""
     @State var newProductPrice: String = ""
     
     @State var isShowingErrorAlert = false
+    
+    @State var isShowingPhotoPickerView = false
     
     func addProduct() {
         // if with bool check oneliner
@@ -33,6 +37,11 @@ struct AddProductView: View {
             isShowingErrorAlert = true
         }
         return ()
+    }
+    
+    func didTapPhotoPickerButton() {
+        isShowingPhotoPickerView = true
+        
     }
     
     
@@ -72,10 +81,24 @@ struct AddProductView: View {
                     Text("Produkt")
                 }
             }
+            .buttonStyle(.borderedProminent).padding()
+            
+            Button {
+                didTapPhotoPickerButton()
+            } label: {
+                Text("Velg produktbilde")
+            }
+            .buttonStyle(.borderedProminent).padding()
+            
+            Spacer()
             
             
             Spacer()
-        }.alert("Det skjedde noe feil", isPresented: $isShowingErrorAlert) {
+        }
+        .sheet(isPresented: $isShowingPhotoPickerView, content: {
+            PhotoSelectView(sourceType: .photoLibrary)
+        })
+        .alert("Det skjedde noe feil", isPresented: $isShowingErrorAlert) {
             Text("Dette var action closure")
         } message: {
             Text("Dette var message closure")

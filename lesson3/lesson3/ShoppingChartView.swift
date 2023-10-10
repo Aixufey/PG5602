@@ -50,7 +50,7 @@ struct ShoppingChartView: View {
                 shoppingCart.wrappedValue = []
                 print(shoppingCart.wrappedValue)
             } catch let error {
-                print(error)
+                print("The error is: \(error)")
                 shownError = error as? APIClientError
                 isShowingError = true // Show Sheet
             }
@@ -97,8 +97,19 @@ struct ShoppingChartView: View {
                 .tint(.green)
             } // VStack
             .sheet(isPresented: $isShowingError) {
-                Text("Noe feil skjedde!")
-                
+                //Text("Noe feil skjedde!")
+                switch shownError {
+                case .stolenCard:
+                    WebpageView(url: URL.init(string: "https://www.politiet.no/tjenester/anmelde/")!)
+                case .insufficientFunds:
+                    Text("Du har ikke nok penger på kortet")
+                case .statusCode(var statusCode):
+                    Text("Prøv igjen, kontakt administrasjonen")
+                case .failed(underlying: var error):
+                    Text("Prøv igjen, kontakt administrasjonen")
+                default:
+                    Text("Prøv igjen, kontakt administrasjonen")
+                }
             }
         } // Navigation
         .onAppear {
