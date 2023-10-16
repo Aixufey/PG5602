@@ -23,9 +23,13 @@ struct AddProductView: View {
     @State var newProductDescription: String = ""
     @State var newProductPrice: String = ""
     
+    @State var image: Image? = Image("productImage")
+    
     @State var isShowingErrorAlert = false
     
     @State var isShowingPhotoPickerView = false
+    
+    
     
     func addProduct() {
         // if with bool check oneliner
@@ -49,7 +53,7 @@ struct AddProductView: View {
     var body: some View {
         
         
-        VStack(alignment: .trailing) {
+        VStack(alignment: .center) {
             
             HStack {
                 Text("Legg til nytt produkt")
@@ -60,10 +64,30 @@ struct AddProductView: View {
                 Spacer()
             } // title Hstack
             
-            // binding with $ and the value will be bound to the variable
-            TextField("Produktnavn", text: $newProductName)
-            TextField("Beskrivelse", text: $newProductDescription)
-            TextField("Pris", text: $newProductPrice)
+            HStack {
+                Spacer()
+                // If image was picked return the image View
+                if let image = image {
+                    HStack {
+                        Spacer()
+                        image
+                            .resizable()
+                        .modifier(CoolStyle())
+                        Spacer()
+                    }
+                }
+                Spacer()
+            }
+            
+            
+            Group {
+                // binding with $ and the value will be bound to the variable
+                TextField("Produktnavn", text: $newProductName)
+                TextField("Beskrivelse", text: $newProductDescription)
+                TextField("Pris", text: $newProductPrice)
+            }
+            .modifier(CoolTextFieldStyle())
+            .padding()
             
             
             // Saving the state from userinput
@@ -96,7 +120,12 @@ struct AddProductView: View {
             Spacer()
         }
         .sheet(isPresented: $isShowingPhotoPickerView, content: {
-            PhotoSelectView(sourceType: .photoLibrary)
+            // Sheet may return a View, in this closure we call the PhotoSelectView that returns a View with our selected photo
+            PhotoSelectView(sourceType: .photoLibrary) { image in
+                print(image)
+                self.image = Image(uiImage: image)
+                isShowingPhotoPickerView = false
+            }
         })
         .alert("Det skjedde noe feil", isPresented: $isShowingErrorAlert) {
             Text("Dette var action closure")

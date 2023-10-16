@@ -10,7 +10,12 @@ import SwiftUI
 // Extracting the selected image out from this View
 struct PhotoSelectView: UIViewControllerRepresentable {
     
+    // Source type - we can select the picture source from Camera or Photolibrary
+    let sourceType: UIImagePickerController.SourceType
+    
+    // Closure has to be as the last parameter.
     var didPickImage: ( (UIImage) -> Void )?
+    
     
     // Coordinator is a API from Apple to delegate data to other Views via Controllers
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -28,15 +33,13 @@ struct PhotoSelectView: UIViewControllerRepresentable {
         }
     }
     
-    // Source type - we can select the picture source from Camera or Photolibrary
-    let sourceType: UIImagePickerController.SourceType
-    init(sourceType: UIImagePickerController.SourceType) {
-        self.sourceType = sourceType
-    }
+    
+    
     
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let viewController = UIImagePickerController()
+        // source defines where the source is coming from, Camera or Library ..
         viewController.sourceType = sourceType
         
         // Our struct "Image picker" needs to provide coordinator from Context to handle the communication between Views, this via Controller delegate from PhotoSelectView
