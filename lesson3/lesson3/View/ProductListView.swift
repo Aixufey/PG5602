@@ -93,39 +93,39 @@ struct ProductListView: View {
         }
         
         // Modern way - Concurrency multithreading, But this logic is now refactored into an API Client : -)
-//        Task {
-//            var urlRequest = URLRequest.init(url: URL.init(string:"https://raw.githubusercontent.com/BeiningBogen/PG5602/master/products.json")!)
-//            urlRequest.httpMethod = "GET"
-//            do {
-//                // URLSession returning (data, response) as a Tuple
-//                let (data, response) = await try
-//                URLSession.shared.data(for: urlRequest)
-//
-//                // guard is a Premise in case we dont get ANY statusCode at all
-//                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 200
-//                else {
-//                    // Throw error
-//                    throw MyError.runTimeError("NO STATUS CODE FROM RESPONSE!!")
-//                }
-//
-//                let stringResponse = String.init(data: data, encoding: .utf8)
-//                print(stringResponse)
-//
-//
-//                let products = try JSONDecoder().decode([Product].self, from: data)
-//
-//                print(products)
-//
-//                print(statusCode)
-//                DispatchQueue.main.async {
-//
-//                    self.products = products
-//                }
-//
-//            } catch let error {
-//
-//            }
-//        } // Task
+        //        Task {
+        //            var urlRequest = URLRequest.init(url: URL.init(string:"https://raw.githubusercontent.com/BeiningBogen/PG5602/master/products.json")!)
+        //            urlRequest.httpMethod = "GET"
+        //            do {
+        //                // URLSession returning (data, response) as a Tuple
+        //                let (data, response) = await try
+        //                URLSession.shared.data(for: urlRequest)
+        //
+        //                // guard is a Premise in case we dont get ANY statusCode at all
+        //                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 200
+        //                else {
+        //                    // Throw error
+        //                    throw MyError.runTimeError("NO STATUS CODE FROM RESPONSE!!")
+        //                }
+        //
+        //                let stringResponse = String.init(data: data, encoding: .utf8)
+        //                print(stringResponse)
+        //
+        //
+        //                let products = try JSONDecoder().decode([Product].self, from: data)
+        //
+        //                print(products)
+        //
+        //                print(statusCode)
+        //                DispatchQueue.main.async {
+        //
+        //                    self.products = products
+        //                }
+        //
+        //            } catch let error {
+        //
+        //            }
+        //        } // Task
     }
     
     // HTTP request test with closures, use the multi-threading instead !!
@@ -155,7 +155,7 @@ struct ProductListView: View {
                 }
                 
                 print(products)
-            
+                
             } else {
                 print("No data received")
             }
@@ -241,13 +241,13 @@ struct ProductListView: View {
                     } else {
                         Text("Logged out")
                     }
-//                    if KeychainSwift().get(AppStorageKeys.password.rawValue) != nil, let username = UserDefaults().object(forKey: AppStorageKeys.username.rawValue) as? String {
-//
-//                        Text("Du er en vanlig bruker, logget inn \(username).")
-//                    } else {
-//                        Text("Du er en vanlig bruker, ikke logget inn")
-//
-//                    }
+                    //                    if KeychainSwift().get(AppStorageKeys.password.rawValue) != nil, let username = UserDefaults().object(forKey: AppStorageKeys.username.rawValue) as? String {
+                    //
+                    //                        Text("Du er en vanlig bruker, logget inn \(username).")
+                    //                    } else {
+                    //                        Text("Du er en vanlig bruker, ikke logget inn")
+                    //
+                    //                    }
                     
                     
                 } // ifelse
@@ -296,12 +296,27 @@ struct ListItemView : View {
     }
     
     var body: some View {
-        VStack(alignment: .leading,spacing: 0) {
-            Text("\(product.name)")
-            Text(product.description)
-                .foregroundColor(.gray)
+        HStack {
+            Spacer()
+            
+            Image(uiImage: product.heroImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .cornerRadius(10)
+                .shadow(color: .black, radius: 5)
+                .clipped()
+            
+            VStack(alignment: .leading,spacing: 0) {
+                Text("\(product.name)")
+                Text(product.description)
+                    .foregroundColor(.gray)
+            }
+            .padding()
+            .foregroundColor(.brown)
+            
+            Spacer()
         }
-        .padding()
-        .foregroundColor(.brown)
+        .padding(.horizontal)
     }
 }

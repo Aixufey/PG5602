@@ -50,6 +50,7 @@ struct UpdateProductView: View {
             }
             
         }.font(.largeTitle)
+        
     }
 }
 

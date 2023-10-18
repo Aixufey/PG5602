@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-
+import UIKit
 
 
 struct Product: Identifiable, Codable {
@@ -28,6 +27,11 @@ struct Product: Identifiable, Codable {
         case price
         case images = "product_images"
         case id
+    }
+    
+    var heroImage: UIImage {
+        // let imageURL = images.first?.url
+        return UIImage(named: "productImage")!
     }
 }
 
