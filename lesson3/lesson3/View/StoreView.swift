@@ -9,12 +9,16 @@ import SwiftUI
 import CoreData
 
 struct StoreView: View {
+
+    @State var isPresentingDelete: Bool = false
+    @State var isDeleting: Bool = false
     
     // Environment var for App to reference this with .manageObjectContext
     @Environment(\.managedObjectContext) var moc
     
     // When fetching from database, we need to sort it on a type, here we sort by name ascending of collection type FetchedResults
     @FetchRequest(sortDescriptors: [.init(key: "name", ascending: true)]) var stores: FetchedResults<Store>
+    
     
     var body: some View {
 
@@ -23,7 +27,6 @@ struct StoreView: View {
             ForEach(stores) { store in
                 VStack {
                     Text(store.name ?? "N/A")
-                    // Text(store.latitude) maybe need more than key: "name" ??
                 }
                 
                 
@@ -44,19 +47,29 @@ struct StoreView: View {
             
             // Deleting in Core Data
             Button("Delete all") {
-                for store in stores {
-                    moc.delete(store)
+                if !stores.isEmpty {
+                    isPresentingDelete = true
                 }
-                
-                moc.saveAndPrintError()
             }
             
         } // VStack
-        .onAppear {
-            if moc.hasChanges {
-                moc.rollback()
-            } else {
-                
+        .alert("Do you want to delete", isPresented: $isPresentingDelete) {
+            VStack {
+                Text("Do you want to delete all?")
+                Button("Yes") {
+                    // action
+                    isDeleting = true
+                    if isDeleting {
+                        for store in stores {
+                            moc.delete(store)
+                        }
+                        moc.saveAndPrintError()
+                    }
+                }
+                Button("Cancel") {
+                    // action
+                    isDeleting = false
+                }
             }
         }
     } // body

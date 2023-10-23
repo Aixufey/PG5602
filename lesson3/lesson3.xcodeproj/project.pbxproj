@@ -88,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7101C9C02AE6A1970062FFC3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7101C9BC2AE6820B0062FFC3 /* DataController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		713C7F2D2ADE9AFA006C8123 /* View Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,9 +185,9 @@
 		71AB647C2AA5E6CE009A2B6F /* lesson3 */ = {
 			isa = PBXGroup;
 			children = (
+				7101C9C02AE6A1970062FFC3 /* Controller */,
 				713C5D6E2AD40ABE00DB0647 /* APIClient.swift */,
 				71AB64812AA5E6D0009A2B6F /* Assets.xcassets */,
-				7101C9BC2AE6820B0062FFC3 /* DataController.swift */,
 				71AB647D2AA5E6CE009A2B6F /* lesson3App.swift */,
 				713C7F322ADE9E05006C8123 /* Models */,
 				71AB64832AA5E6D0009A2B6F /* Preview Content */,
