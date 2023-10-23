@@ -15,6 +15,9 @@ struct lesson3App: App {
     @State var shoppingCart = [Product]()
     @State var usernameStillExist: Bool = false
     
+    // StateObject vs State? To initialize controller
+    @StateObject var dataController = DataController()
+    
     let fileName: String = "data.json"
     
     // Read from disk
@@ -115,10 +118,18 @@ struct lesson3App: App {
                     .tabItem {
                         Label("Settings", systemImage: "tray.and.arrow.down.fill")
                     }
+                
+                // Tab 4
+                StoreView()
+                    .tabItem {
+                        Label("Stores", systemImage: "dollarsign")
+                    }
             }
             .onAppear {
                 onAppear()
             }
+            // environment variable that reference to the database
+            .environment(\.managedObjectContext, dataController.container.viewContext)
             
         }
     }
