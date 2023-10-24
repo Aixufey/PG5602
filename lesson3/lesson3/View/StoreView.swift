@@ -19,6 +19,7 @@ struct StoreView: View {
     // When fetching from database, we need to sort it on a type, here we sort by name ascending of collection type FetchedResults
     @FetchRequest(sortDescriptors: [.init(key: "name", ascending: true)]) var stores: FetchedResults<Store>
     
+    @State var isShowingAddStoreView = false
     
     var body: some View {
 
@@ -37,7 +38,7 @@ struct StoreView: View {
                 let entity = NSEntityDescription.entity(forEntityName: "Store", in: moc)!
                 let store = Store(entity: entity, insertInto: moc)
                 store.name = "testbutikk 1"
-                store.longtitude = 10.31234
+                store.longitude = 10.31234
                 store.latitude = 52.12315
                 store.openingHour = Date().description(with: .current)
                 
@@ -52,7 +53,18 @@ struct StoreView: View {
                 }
             }
             
+            Button("Add new store") {
+                isShowingAddStoreView = true
+            }
+            .buttonStyle(.bordered)
+            
         } // VStack
+        .sheet(isPresented: $isShowingAddStoreView) {
+            AddStoreView(isPresented: $isShowingAddStoreView)
+                .onDisappear {
+                    print(isShowingAddStoreView)
+                }
+        }
         .alert("Do you want to delete", isPresented: $isPresentingDelete) {
             VStack {
                 Text("Do you want to delete all?")

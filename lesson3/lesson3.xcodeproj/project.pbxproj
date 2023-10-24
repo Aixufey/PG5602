@@ -30,6 +30,7 @@
 		71AB64852AA5E6D0009A2B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71AB64842AA5E6D0009A2B6F /* Preview Assets.xcassets */; };
 		71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEC4C62AB073F900C07393 /* UpdateProductView.swift */; };
 		71B302CA2AC1984900D9C528 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71B302C92AC1984900D9C528 /* KeychainSwift */; };
+		71B941F82AE7D1D8002FFD44 /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941F72AE7D1D8002FFD44 /* AddStoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		71AB64812AA5E6D0009A2B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71AB64842AA5E6D0009A2B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71AEC4C62AB073F900C07393 /* UpdateProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProductView.swift; sourceTree = "<group>"; };
+		71B941F72AE7D1D8002FFD44 /* AddStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				71AEC4C62AB073F900C07393 /* UpdateProductView.swift */,
 				71893FE52AD5624D00D0D976 /* WebpageView.swift */,
 				7101C9BE2AE6860A0062FFC3 /* StoreView.swift */,
+				71B941F72AE7D1D8002FFD44 /* AddStoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				71751E912AC2FA0200897EAF /* ProductImage.swift in Sources */,
 				71AB647E2AA5E6CE009A2B6F /* lesson3App.swift in Sources */,
 				71893FE62AD5624D00D0D976 /* WebpageView.swift in Sources */,
+				71B941F82AE7D1D8002FFD44 /* AddStoreView.swift in Sources */,
 				717F44B42AAF2831000DCFE4 /* AddProductView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
