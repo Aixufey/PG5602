@@ -174,5 +174,22 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3ED58B1-6982-44C6-BBBA-EDC75BC377D7"
+            shouldBeEnabled = "No"
+            condition = "po sheetState"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lesson3/View/StoreView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

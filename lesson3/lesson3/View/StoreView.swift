@@ -7,11 +7,26 @@
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct StoreView: View {
-
+    
+    // Useful for managing multiple sheet because you may only return one sheet per screen.
+    enum SheetState {
+        case addStore
+        case openingHours(store: Store)
+        case none
+    }
+    @State var isShowingSheet = false
+    @State var sheetState = SheetState.none
+    @State var isShowingAddStoreView: Bool = false
+    @State var isShowingOpeningHours: Bool = false
+    
+    
     @State var isPresentingDelete: Bool = false
     @State var isDeleting: Bool = false
+    
+    
     
     // Environment var for App to reference this with .manageObjectContext
     @Environment(\.managedObjectContext) var moc
@@ -19,12 +34,34 @@ struct StoreView: View {
     // When fetching from database, we need to sort it on a type, here we sort by name ascending of collection type FetchedResults
     @FetchRequest(sortDescriptors: [.init(key: "name", ascending: true)]) var stores: FetchedResults<Store>
     
-    @State var isShowingAddStoreView = false
     
     var body: some View {
-
+        
         
         VStack {
+            
+            // Map takes a closure that returns a View and the item is the object we are passing into map to find the coordinates
+            Map(mapRect: .constant(.world),
+                annotationItems: stores) { store in
+                
+                // MapAnnotation returns a View -- Here we can make our own custom marker
+                MapAnnotation(coordinate:
+                                CLLocationCoordinate2D(latitude: CLLocationDegrees(store.latitude), longitude: CLLocationDegrees(store.longitude))) {
+                    
+                    HStack {
+                        Circle()
+                            .fill(.black)
+                        Text(store.name ?? "Unknown")
+                    }.onTapGesture {
+                        print("did tap \(store.name)")
+                        sheetState = .openingHours(store: store)
+                        isShowingSheet = true
+                    }
+                }
+                
+            }
+            
+            
             ForEach(stores) { store in
                 VStack {
                     Text(store.name ?? "N/A")
@@ -54,16 +91,34 @@ struct StoreView: View {
             }
             
             Button("Add new store") {
-                isShowingAddStoreView = true
+                //isShowingAddStoreView = true
+                sheetState = .addStore
+                // TODO: A tool temporarily waiting 2 seconds before showing the sheet. A bug not assigning it to true.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    isShowingSheet = true
+                }
             }
             .buttonStyle(.bordered)
             
         } // VStack
-        .sheet(isPresented: $isShowingAddStoreView) {
-            AddStoreView(isPresented: $isShowingAddStoreView)
-                .onDisappear {
-                    print(isShowingAddStoreView)
-                }
+        // Refactored the condition to use enum to manage different cases for sheets
+        .sheet(isPresented: $isShowingSheet) {
+            switch sheetState {
+            case .addStore:
+                AddStoreView(isPresented: $isShowingSheet)
+                    .onDisappear {
+                        print(isShowingAddStoreView)
+                    }
+            case .openingHours(store: let store):
+                Text("\(store.openingHour ?? "Unknown")")
+                
+                // Detent of a screen 33% size of screen
+                    .presentationDetents([.fraction(0.3)])
+            case .none:
+                EmptyView()
+                Text("lol")
+                    .presentationDetents([.fraction(0.3)])
+            }
         }
         .alert("Do you want to delete", isPresented: $isPresentingDelete) {
             VStack {
