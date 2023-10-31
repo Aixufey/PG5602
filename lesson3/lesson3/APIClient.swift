@@ -16,7 +16,8 @@ struct APIClient {
     
     // func getProducts() -> [Product] {} function returning array of products is equivalent to closure declaration
     
-    
+    // Endpoint for StoreView and Map
+    var getStores: (() async throws -> [Store])
 }
 
 enum APIClientError: Error {
@@ -55,6 +56,31 @@ extension APIClient {
            statusCode != 200 {
             throw APIClientError.statusCode(statusCode)
         }
+    }, getStores: {
+        var url = URL(string: "https://www.google.com")!
+        var urlRequest = URLRequest.init(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = ["Accept": "application/json", "Content-Type": "application/json"]
+        
+        let (data, resp) = try await URLSession.shared.data(from: url)
+        
+        if let statusCode = (resp as? HTTPURLResponse)?.statusCode {
+            switch statusCode {
+            case 200...299:
+                // client
+//                return try JSONDecoder().decode([Store].self, from: data)
+                break
+            case 400...499:
+                // user
+                break
+            case 500...599:
+                // server
+                break
+            default:
+                break
+            }
+        }
+        return []
     }
     )
     
@@ -68,6 +94,13 @@ extension APIClient {
     }, purchaseProducts: { product in
         // throw APIClientError.stolenCard
         return
+    }, getStores: {
+//        var store = Store()
+//        store.name = "Test store 1"
+//        store.longitude = 10.191
+//        store.latitude = 9.3123
+//        store.openingHour = "Mon-Sat 10:00 - 18:00"
+        return []
     } )
     
     
@@ -77,6 +110,8 @@ extension APIClient {
         APIClient {
             throw error
         } purchaseProducts: { _ in
+            throw error
+        } getStores: {
             throw error
         }
     }

@@ -31,6 +31,9 @@
 		71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEC4C62AB073F900C07393 /* UpdateProductView.swift */; };
 		71B302CA2AC1984900D9C528 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71B302C92AC1984900D9C528 /* KeychainSwift */; };
 		71B941F82AE7D1D8002FFD44 /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941F72AE7D1D8002FFD44 /* AddStoreView.swift */; };
+		71B941FA2AEFE067002FFD44 /* MyManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941F92AEFE067002FFD44 /* MyManagedObject.swift */; };
+		71BB00DE2AF11C0700EE2903 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB00DC2AF11C0700EE2903 /* Store+CoreDataClass.swift */; };
+		71BB00DF2AF11C0700EE2903 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB00DD2AF11C0700EE2903 /* Store+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		71AB64842AA5E6D0009A2B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71AEC4C62AB073F900C07393 /* UpdateProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProductView.swift; sourceTree = "<group>"; };
 		71B941F72AE7D1D8002FFD44 /* AddStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
+		71B941F92AEFE067002FFD44 /* MyManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyManagedObject.swift; sourceTree = "<group>"; };
+		71BB00DC2AF11C0700EE2903 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataClass.swift"; sourceTree = "<group>"; };
+		71BB00DD2AF11C0700EE2903 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,8 @@
 		713C7F322ADE9E05006C8123 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				71BB00DC2AF11C0700EE2903 /* Store+CoreDataClass.swift */,
+				71BB00DD2AF11C0700EE2903 /* Store+CoreDataProperties.swift */,
 				71A2AE252AA5F90E00F97E60 /* Product.swift */,
 				71751E902AC2FA0200897EAF /* ProductImage.swift */,
 				7101C9B92AE680B50062FFC3 /* Model.xcdatamodeld */,
@@ -197,6 +205,7 @@
 				713C7F332ADEA1AC006C8123 /* UI */,
 				713C7F312ADE9D2D006C8123 /* View */,
 				713C7F2D2ADE9AFA006C8123 /* View Modifiers */,
+				71B941F92AEFE067002FFD44 /* MyManagedObject.swift */,
 			);
 			path = lesson3;
 			sourceTree = "<group>";
@@ -325,12 +334,14 @@
 			files = (
 				71A2AE282AA6067B00F97E60 /* ProductDTView.swift in Sources */,
 				7110D9EF2AB9B21F00C71468 /* ProfileView.swift in Sources */,
+				71B941FA2AEFE067002FFD44 /* MyManagedObject.swift in Sources */,
 				71712DFF2AB86DCC0084F54D /* SettingsView.swift in Sources */,
 				71712DFD2AB86D290084F54D /* ShoppingChartView.swift in Sources */,
 				71A2AE262AA5F90E00F97E60 /* Product.swift in Sources */,
 				713C5D6F2AD40ABE00DB0647 /* APIClient.swift in Sources */,
 				716DD9C02ADD555B00586D7C /* CoolTextFieldStyle.swift in Sources */,
 				71AB64802AA5E6CE009A2B6F /* ProductListView.swift in Sources */,
+				71BB00DE2AF11C0700EE2903 /* Store+CoreDataClass.swift in Sources */,
 				7101C9BB2AE680B50062FFC3 /* Model.xcdatamodeld in Sources */,
 				71AEC4C72AB073F900C07393 /* UpdateProductView.swift in Sources */,
 				713F210E2ADD4ADD00621E5C /* CoolStyle.swift in Sources */,
@@ -341,6 +352,7 @@
 				71751E912AC2FA0200897EAF /* ProductImage.swift in Sources */,
 				71AB647E2AA5E6CE009A2B6F /* lesson3App.swift in Sources */,
 				71893FE62AD5624D00D0D976 /* WebpageView.swift in Sources */,
+				71BB00DF2AF11C0700EE2903 /* Store+CoreDataProperties.swift in Sources */,
 				71B941F82AE7D1D8002FFD44 /* AddStoreView.swift in Sources */,
 				717F44B42AAF2831000DCFE4 /* AddProductView.swift in Sources */,
 			);
