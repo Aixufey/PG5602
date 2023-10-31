@@ -20,4 +20,7 @@ class DataController : ObservableObject {
             print(description) // contains the SQLITE uri
         }
     }
+    
+    // Get a shared instance of Datacontroller throughout App without sending reference to Views..
+    static let shared = DataController()
 }

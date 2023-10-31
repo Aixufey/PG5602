@@ -36,7 +36,10 @@ public class Store: NSManagedObject, Decodable {
         let latitude = try container.decode(Float.self, forKey: .latitude)
         let openingHour = try container.decodeIfPresent(String.self, forKey: .openingHours)
         
-        let managedObjectContext = NSManagedObjectContext(.mainQueue)
+        let dataController = DataController.shared
+        
+        // let managedObjectContext = NSManagedObjectContext(.mainQueue)
+        let managedObjectContext = dataController.container.viewContext
         
         super.init(entity:
                 .entity(forEntityName: "Store", in:
