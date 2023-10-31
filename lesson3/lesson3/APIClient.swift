@@ -25,6 +25,7 @@ enum APIClientError: Error {
     case statusCode(Int)
     case insufficientFunds
     case stolenCard
+    case unknown
 }
 extension APIClient {
     // Trailing closure with explicit getProducts
@@ -68,19 +69,12 @@ extension APIClient {
             switch statusCode {
             case 200...299:
                 // client
-//                return try JSONDecoder().decode([Store].self, from: data)
-                break
-            case 400...499:
-                // user
-                break
-            case 500...599:
-                // server
-                break
+                return try JSONDecoder().decode([Store].self, from: data)
             default:
-                break
+                throw APIClientError.statusCode(statusCode)
             }
         }
-        return []
+        throw APIClientError.unknown
     }
     )
     
