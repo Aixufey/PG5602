@@ -11,6 +11,13 @@ struct ProductDTView: View {
     
     let product: Product
     
+    // Animation vars
+    @State var scale: CGFloat = 1
+    @State var rotationAngle: CGFloat = 0
+    @State var imageOpacity: CGFloat = 1
+    @State var imageBlur: CGFloat = 0
+    @State var textPadding: CGFloat = 40
+    
     init(product: Product) {
         self.product = product
     }
@@ -22,7 +29,7 @@ struct ProductDTView: View {
                 Text(product.name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(EdgeInsets(top: 40, leading: 40, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: textPadding, leading: 40, bottom: 0, trailing: 0))
                 Spacer() // Push the title to the left
             } // HStack Title
             Image("productImage")
@@ -30,6 +37,8 @@ struct ProductDTView: View {
             //.scaledToFit()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 200)
+                .opacity(imageOpacity)
+                .blur(radius: imageBlur)
             
             
             Text(product.description)
@@ -44,6 +53,19 @@ struct ProductDTView: View {
             
             Button {
                 // TODO: buy product
+                
+                withAnimation {
+                    scale = 1.5
+                    rotationAngle = 100
+                    imageOpacity = 0
+                    textPadding = 400
+                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                    scale = 1
+//                    rotationAngle = 360
+//                }
+                print("bought \(product.name)")
+                
             } label: {
                 ZStack {
                     Circle()
@@ -56,7 +78,14 @@ struct ProductDTView: View {
                 }
                 
             }
+            .scaleEffect(scale)
+//            .rotationEffect(Angle(degrees: rotationAngle))
 
+        } // VStack
+        .onAppear {
+            withAnimation(.linear(duration: 2)) {
+                imageBlur = 0
+            }
         }
     }
 }

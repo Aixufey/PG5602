@@ -40,6 +40,12 @@ struct SettingsView: View {
                 Button.init("Kontakt oss") {
                     isShowingOpenURLAlert = true
                 }
+                
+                NavigationLink {
+                    ShippingAddressView()
+                } label: {
+                    Text("Shipping address")
+                }
             }
             .navigationTitle("Instillinger")
             

@@ -11,6 +11,7 @@
 		7101C9BD2AE6820B0062FFC3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101C9BC2AE6820B0062FFC3 /* DataController.swift */; };
 		7101C9BF2AE6860A0062FFC3 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101C9BE2AE6860A0062FFC3 /* StoreView.swift */; };
 		7110D9EF2AB9B21F00C71468 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110D9EE2AB9B21F00C71468 /* ProfileView.swift */; };
+		7139E2912B02138700E91950 /* ShippingAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7139E2902B02138700E91950 /* ShippingAddressView.swift */; };
 		713C5D6F2AD40ABE00DB0647 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5D6E2AD40ABE00DB0647 /* APIClient.swift */; };
 		713C7F352ADEA1C1006C8123 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C7F342ADEA1C1006C8123 /* MyButton.swift */; };
 		713F210E2ADD4ADD00621E5C /* CoolStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F210D2ADD4ADD00621E5C /* CoolStyle.swift */; };
@@ -52,6 +53,7 @@
 		7101C9BC2AE6820B0062FFC3 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		7101C9BE2AE6860A0062FFC3 /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		7110D9EE2AB9B21F00C71468 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7139E2902B02138700E91950 /* ShippingAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressView.swift; sourceTree = "<group>"; };
 		713C5D6E2AD40ABE00DB0647 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		713C7F342ADEA1C1006C8123 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		713F210D2ADD4ADD00621E5C /* CoolStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolStyle.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		713C7F312ADE9D2D006C8123 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7139E2902B02138700E91950 /* ShippingAddressView.swift */,
 				717F44B32AAF2831000DCFE4 /* AddProductView.swift */,
 				71893FE72AD56AEF00D0D976 /* PhotoSelectView.swift */,
 				71A2AE272AA6067B00F97E60 /* ProductDTView.swift */,
@@ -351,6 +354,7 @@
 				713F210E2ADD4ADD00621E5C /* CoolStyle.swift in Sources */,
 				71893FE82AD56AEF00D0D976 /* PhotoSelectView.swift in Sources */,
 				713C7F352ADEA1C1006C8123 /* MyButton.swift in Sources */,
+				7139E2912B02138700E91950 /* ShippingAddressView.swift in Sources */,
 				7101C9BF2AE6860A0062FFC3 /* StoreView.swift in Sources */,
 				7101C9BD2AE6820B0062FFC3 /* DataController.swift in Sources */,
 				71751E912AC2FA0200897EAF /* ProductImage.swift in Sources */,

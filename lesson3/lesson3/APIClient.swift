@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct APIClient {
     
@@ -18,6 +19,11 @@ struct APIClient {
     
     // Endpoint for StoreView and Map
     var getStores: (() async throws -> [Store])
+    
+    
+    // Shipping Address
+    var updateAddress: (_ address: String, _ postalCode: String) async throws -> ()
+    
 }
 
 enum APIClientError: Error {
@@ -75,8 +81,18 @@ extension APIClient {
             }
         }
         throw APIClientError.unknown
+    }) { address, postalCode in
+        // Quick way to write a struct to post this body
+        struct UpdateAddressParameter: Encodable {
+            let address: String
+            let postalCode: String
+        }
+        var urlRequest = URLRequest.init(url: URL(string: "dasda")!)
+        urlRequest.httpMethod = "PUT"
+        let parameter = UpdateAddressParameter(address: address, postalCode: postalCode)
+        urlRequest.httpBody = try JSONEncoder().encode(parameter)
+        
     }
-    )
     
     
     static let demo = APIClient(getProducts: {
@@ -95,6 +111,8 @@ extension APIClient {
 //        store.latitude = 9.3123
 //        store.openingHour = "Mon-Sat 10:00 - 18:00"
         return []
+    }, updateAddress: {_, _ in
+        
     } )
     
     
@@ -106,6 +124,8 @@ extension APIClient {
         } purchaseProducts: { _ in
             throw error
         } getStores: {
+            throw error
+        } updateAddress: { address, postalCode in
             throw error
         }
     }
